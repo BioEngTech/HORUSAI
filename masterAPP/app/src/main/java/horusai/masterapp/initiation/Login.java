@@ -208,7 +208,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Vie
 
             });
 
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e){
 
             spinvisibility(spin, View.INVISIBLE, loginBtn, Login.this);
 
@@ -235,7 +235,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Vie
         }
     }
 
-    private static void spinvisibility(View spinView, int visibility, Button btn, Context context) {
+    protected static void spinvisibility(View spinView, int visibility, Button btn, Context context) {
 
         if (visibility == View.INVISIBLE) {
             btn.setEnabled(true); // SPINNER ONLY APPEARS ON THE FRAME LAYOUT IF "btn" IS SET TO DISABLE
