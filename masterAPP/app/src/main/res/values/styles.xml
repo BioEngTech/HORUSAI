@@ -10,7 +10,6 @@
         <item name="cardViewStyle">@style/CardView</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowActivityTransitions">true</item>
-
     </style>
 
     <style name="TextView.InputLabel" parent="TextAppearance.AppCompat.Caption">
@@ -18,6 +17,17 @@
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingRight">4dp</item>
+    </style>
+
+    <style name="CollapsedAppBar" parent="@style/AppTheme">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/colorDark</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <style name="hint" parent="@style/TextAppearance.Design.Hint">
@@ -43,10 +53,6 @@
     </style>
 
     <style name="ToolbarStyleWhite" parent="@style/AppTheme">
-        <item name="colorControlNormal">@color/colorWhite</item>
-    </style>
-
-    <style name="RadioStyle" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">@color/colorWhite</item>
     </style>
 

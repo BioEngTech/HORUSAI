@@ -7,7 +7,7 @@
     <string name="internet_connection_not_available_text">Internet connection is not available</string>
     <string name="app_name_text">vigi</string>
 
-    <!-- LOGIN/REGISTER STRINGS -->
+    <!-- AUTH STRINGS -->
 
     <string name="name_app_text">Vigi</string>
     <string name="password_hint_text">Password</string>
@@ -39,11 +39,11 @@
     <string name="home_slide_one_text">Get the help you need, right in the corner.</string>
     <string name="home_care_image">home_care</string>
     <string name="home_slide_three_text">Get daily assistance at your house.</string>
-    <string name="error_text">error</string>
+    <string name="error_text">Error</string>
     <string name="please_enter_your_e_mail_text">Please enter your e-mail</string>
     <string name="email_afterwards_text">An e-mail will be sent to you afterwards!</string>
 
-    <!-- USER STRINGS -->
+    <!-- PATIENT STRINGS -->
 
     <string name="events_fragment_text">Events fragment</string>
     <string name="timeline_fragment_text">Timeline fragment</string>
@@ -65,6 +65,7 @@
     <string name="sign_up_to_continue_text">sign up to continue</string>
     <string name="title_activity_main">main</string>
     <string name="large_text">
+
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."

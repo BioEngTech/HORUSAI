@@ -24,7 +24,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/utilsErrorDialog_title"
+                    android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -36,7 +36,7 @@
 
                 <TextView
                     android:padding="25dp"
-                    android:id="@+id/utilsErrorDialog_message"
+                    android:id="@+id/message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -45,12 +45,11 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorMain"
-                    />
+                    android:background="@color/colorMain" />
 
 
                 <Button
-                    android:id="@+id/utilsErrorDialog_okBtn"
+                    android:id="@+id/ok_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
