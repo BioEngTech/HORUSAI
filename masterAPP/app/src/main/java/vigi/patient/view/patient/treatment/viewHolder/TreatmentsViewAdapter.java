@@ -4,19 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
+
 import vigi.patient.R;
 
 
@@ -27,30 +24,28 @@ import vigi.patient.view.patient.treatment.TreatmentDetailsActivity;
 @SuppressWarnings("FieldCanBeLocal")
 public class TreatmentsViewAdapter extends PagerAdapter implements View.OnClickListener {
 
-    private ArrayList<Treatment> treatments;
+    private List<Treatment> treatments;
     private LayoutInflater layoutInflater;
     private Context context;
     private ImageView imageView;
     private TextView title;
     private TextView knowMore;
-    private int pos = 0;
+    private int position = 0;
     private String category;
 
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference mRefTreatment;
+    private final static String CHOSEN_TREATMENT = "chosenTreatment";
 
-    public TreatmentsViewAdapter(String category, ArrayList<Treatment> treatments, Context context) {
+
+    public TreatmentsViewAdapter(String category, List<Treatment> treatments, Context context) {
         this.treatments = treatments;
         this.category = category;
-        //super(options);
 
-        this.mDatabase = FirebaseDatabase.getInstance();
-        this.mRefTreatment = mDatabase.getReference().child("Treatment");
         this.context = context;
     }
 
     @Override
     public int getCount() {
+        //TODO: Must be refactored -> infinite = consuming resources
         return Integer.MAX_VALUE; // Make it an infinite view pager
     }
 
@@ -65,10 +60,11 @@ public class TreatmentsViewAdapter extends PagerAdapter implements View.OnClickL
         layoutInflater = LayoutInflater.from(context);
 
         //set loop
-        if (pos >= treatments.size() - 1)
-            pos = 0;
-        else
-            ++pos;
+        if (this.position >= treatments.size() - 1) {
+            this.position = 0;
+        } else {
+            ++this.position;
+        }
 
         View view = layoutInflater.inflate(R.layout.patient_treatment_view, container, false);
 
@@ -76,14 +72,12 @@ public class TreatmentsViewAdapter extends PagerAdapter implements View.OnClickL
         title = view.findViewById(R.id.title);
         knowMore = view.findViewById(R.id.see_more);
 
-        //imageView.setImageDrawable(treatments.get(pos).getImage());
-        Picasso.get().load(treatments.get(pos).getImage()).into(imageView);
-        title.setText(treatments.get(pos).getName());
+        //imageView.setImageDrawable(treatments.get(position).getImage());
+        Picasso.get().load(treatments.get(this.position).getImage().toString()).into(imageView);
+        title.setText(treatments.get(this.position).getName());
 
         imageView.setOnClickListener(this);
         knowMore.setOnClickListener(this);
-
-
 
         container.addView(view);
 
@@ -100,13 +94,12 @@ public class TreatmentsViewAdapter extends PagerAdapter implements View.OnClickL
 
         if (view.getId() == knowMore.getId()){ // Go to treatment details
             Intent treatmentDetailsIntent = new Intent(context, TreatmentDetailsActivity.class);
-            treatmentDetailsIntent.putExtra("treatmentId",treatments.get(pos).getId());
-            treatmentDetailsIntent.putExtra("category_name",category);
+            treatmentDetailsIntent.putExtra(CHOSEN_TREATMENT, treatments.get(position));
             context.startActivity(treatmentDetailsIntent);
 
-        }else if (view.getId() == imageView.getId()){ // Go to booking appointments
+        } else if (view.getId() == imageView.getId()){ // Go to booking appointments
             Intent bookingIntent = new Intent(context, BookAppointmentsActivity.class);
-            bookingIntent.putExtra("treatmentId",treatments.get(pos).getId());
+            bookingIntent.putExtra(CHOSEN_TREATMENT, treatments.get(position));
             context.startActivity(bookingIntent);
         }
     }
